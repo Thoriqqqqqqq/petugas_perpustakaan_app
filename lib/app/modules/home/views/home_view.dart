@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
@@ -10,37 +11,46 @@ class HomeView extends GetView<HomeController> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('HomeView'),
-        centerTitle: true,
-      ),
+        appBar: AppBar(
+          title: const Text('HomeView'),
+          centerTitle: true,
+        ),
         body: Column(
           children: [
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                SizedBox(
-                  width: 20,
-                ),
-                Expanded(child: ElevatedButton(
-                  onPressed: (){Get.toNamed(Routes.BOOK
-                  );}, child: Text('Book'),
-                ),
-                ),
-                SizedBox(
-                  width: 20,
-                ),
-                Expanded(child: ElevatedButton(
-                  onPressed: (){Get.toNamed(Routes.PEMINJAMAN);}, child: Text('Peminjaman'),
-                ),
-                ),
-                SizedBox(
-                  width: 20,
-                ),
-              ],
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 15),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  SizedBox(
+                    width: 20,
+                  ),
+                  Expanded(
+                    child: ElevatedButton(
+                      onPressed: () {
+                        Get.toNamed(Routes.BOOK);
+                      },
+                      child: Text('Book'),
+                    ),
+                  ),
+                  SizedBox(
+                    width: 20,
+                  ),
+                  Expanded(
+                    child: ElevatedButton(
+                      onPressed: () {
+                        Get.toNamed(Routes.PEMINJAMAN);
+                      },
+                      child: Text('Peminjaman'),
+                    ),
+                  ),
+                  SizedBox(
+                    width: 20,
+                  ),
+                ],
+              ),
             )
           ],
-        )
-    );
+        ));
   }
 }

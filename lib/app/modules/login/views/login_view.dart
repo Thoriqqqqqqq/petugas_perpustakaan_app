@@ -14,41 +14,54 @@ class LoginView extends GetView<LoginController> {
         centerTitle: true,
       ),
       body: Center(
-        child: Form(
-          key: controller.formKey,
-          child: Column(
-            children: [
-              TextFormField(
+          child: Form(
+        key: controller.formKey,
+        child: Column(
+          children: [
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 15),
+              child: TextFormField(
                 controller: controller.usernameController,
-                decoration: InputDecoration(hintText: "Masukkan Username"),
-                validator: (value){
-                  if (value!.isEmpty){
+                decoration: InputDecoration(
+                    hintText: "Masukkan username",
+                    border: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(10))),
+                validator: (value) {
+                  if (value!.isEmpty) {
                     return "username tidak boleh kosong";
                   }
                   return null;
                 },
               ),
-
-              TextFormField(
+            ),
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 15),
+              child: TextFormField(
                 controller: controller.passwordController,
-                decoration: InputDecoration(hintText: "Masukkan password"),
-                validator: (value){
-                  if (value!.isEmpty){
+                decoration: InputDecoration(
+                    hintText: "Masukkan password",
+                    border: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(10))),
+                validator: (value) {
+                  if (value!.isEmpty) {
                     return "password tidak boleh kosong";
                   }
                   return null;
                 },
               ),
-              Obx(() => controller.loadinglogin.value?
-              CircularProgressIndicator():
-                  ElevatedButton(onPressed: (){
-                    controller.login();
-              }, child: Text("Login")),
-        )
-            ],
-          ),
-        )
-      ),
+            ),
+            Obx(
+              () => controller.loadinglogin.value
+                  ? CircularProgressIndicator()
+                  : ElevatedButton(
+                      onPressed: () {
+                        controller.login();
+                      },
+                      child: Text("Login")),
+            )
+          ],
+        ),
+      )),
     );
   }
 }
